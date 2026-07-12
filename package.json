@@ -1,14 +1,16 @@
 {
-  "name": "floema",
+  "name": "Resona",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
   "author": "Anshuman Milind Gaikwad",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.build.js",
-    "development": "webpack serve --progress --config webpack.config.development.js",
-    "start": "npm run development",
+    "backend:build": "node app.js",
+    "backend:development": "nodemon app.js",
+    "frontend:build": "webpack --config webpack.config.build.js",
+    "frontend:development": "webpack serve --progress --config webpack.config.development.js",
+    "start": "concurrently --kill-others \"npm run frontend:development\" \"npm run backend:development\"",
     "lint": "eslint app",
     "lint:fix": "eslint app --fix"
   },
@@ -33,5 +35,11 @@
     "webpack-cli": "^7.2.1",
     "webpack-dev-server": "^6.0.0",
     "webpack-merge": "^6.0.1"
+  },
+  "dependencies": {
+    "concurrently": "^10.0.3",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14",
+    "pug": "^3.0.4"
   }
 }
