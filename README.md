@@ -1,4 +1,3 @@
-# Boilerplate
+# Resona
 
-Boilerplate to start writing your code without worring about the production or development phase
-
+Resona is a collection of beautiful and eye catching art gallery.
