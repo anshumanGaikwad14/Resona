@@ -1,18 +1,11 @@
 nav.navigation 
     .navigation__wrapper 
 
-        a.navigation__link(href="/")
-            | Resona 
+        a.navigation__link(href="/")=meta.data.title 
 
             svg.navigation__link__icon
 
         ul.navigation__list
-
-            li.navigation__list__item 
-                a.navigation__list__item__link(href="/gallery") Gallery 
-
-            li.navigation__list__item 
-                a.navigation__list__item__link(href="/about") About 
-
-            li.navigation__list__item 
-                a.navigation__list__item__link(href="/collections") Collections 
+            each lists in navigation.data.links
+                li.navigation__list__item 
+                    a.navigation__list__item__link(href=Link(lists.link))=lists.title     

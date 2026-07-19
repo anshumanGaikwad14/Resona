@@ -4,4 +4,10 @@ block variables
     - var template = "gallery"
 
 block content
-    h1.about.title Gallery
+    .gallery 
+        .gallery__wrapper 
+            each collection in collections
+                each item in collection.data.products
+                    a.gallery__product(href=Link(item.product))
+                        figure.gallery__product__media
+                            img.gallery__product__media__image(alt=item.product.data.image.alt src=item.product.data.image.url)

@@ -8,9 +8,9 @@ html(lang='en')
 
         base(href="/")
 
-        title 
+        title=meta.data.title
         
-        meta(name='description' content="Resona Beautiful art gallery.")
+        meta(name='description' content=meta.data.description)
 
         <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -19,15 +19,15 @@ html(lang='en')
         <meta name="apple-mobile-web-app-title" content="Resona" />
         <link rel="manifest" href="/site.webmanifest" />
         
-        //- meta(property="og:type" content="website")
-        //- meta(property="og:title" content=meta.data.title)
-        //- meta(property="og:description" content=meta.data.description)
-        //- meta(property="og:image" content=meta.data.image ? meta.data.image.url:'')
+        meta(property="og:type" content="website")
+        meta(property="og:title" content=meta.data.title)
+        meta(property="og:description" content=meta.data.description)
+        meta(property="og:image" content=meta.data.image ? meta.data.image.url:'')
 
-        //- meta(name="twitter:card" content="summary_large_image")
-        //- meta(name="twitter:title" content=meta.data.title)
-        //- meta(name="twitter:description" content=meta.data.description)
-        //- meta(name="twitter:image" content=meta.data.image ? meta.data.image.url:'')
+        meta(name="twitter:card" content="summary_large_image")
+        meta(name="twitter:title" content=meta.data.title)
+        meta(name="twitter:description" content=meta.data.description)
+        meta(name="twitter:image" content=meta.data.image ? meta.data.image.url:'')
 
         link(href="main.css" rel="stylesheet")
 

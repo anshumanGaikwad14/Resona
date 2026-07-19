@@ -4,4 +4,20 @@ block variables
     - var template = "home"
 
 block content
-    h1.home.title Home
+    .home 
+        .home__wrapper 
+            .home__center
+                each single in home.data.single_text
+                    .home__center__single
+                        h1.home__center__single__text=single.title 
+
+                .home__center__image
+                    figure.home__center__image__media 
+                        img.home__center__image__media__image(alt=home.data.image.alt src=home.data.image.url)
+                
+                .home__center__multiple 
+                    each multiple in home.data.multiple_text 
+                        h1.home__center__multiple__text=multiple.title
+
+            .home__button 
+                a.home__button__link(href=Link(home.data.collections))=home.data.button

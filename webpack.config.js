@@ -101,7 +101,7 @@ module.exports = {
             encodeOptions: {
               jpeg: {
                 // https://sharp.pixelplumbing.com/api-output#jpeg
-                quality: 80,
+                quality: 100,
               },
               webp: {
                 // https://sharp.pixelplumbing.com/api-output#webp

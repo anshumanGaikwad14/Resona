@@ -4,4 +4,26 @@ block variables
     - var template = "collections"
 
 block content
-    h1.collections.title Collections
+    .collections 
+        .collections__wrapper 
+            .collections__label 
+                .collections__label__wrapper 
+                    each collection, index in collections
+                        p.collections__label__number=`${home.data.collection} ${number(index)}`
+                        p.collections__label__title=collection.data.title
+
+            .collections__gallery
+                .collections__gallery__wrapper
+                    each collection in collections
+                        each products in collection.data.products 
+                            a.collections__gallery__product(href=Link(products.product))
+                                figure.collections__gallery__product__media 
+                                    img.collections__gallery__product__media__image(alt=products.product.data.image.alt src=products.product.data.image.url)
+
+            .collections__content 
+                .collections__content__wrapper 
+                    each collection in collections
+                        h1.collections__title=`${collection.data.title} ${home.data.collection}`
+
+                        p.collections__description=collection.data.description
+                
