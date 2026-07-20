@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride());
 app.use(errorHandler());
 
+app.use(express.static(path.join(__dirname, "public")));
+
 // PRISMIC
 const prismic = require("@prismicio/client");
 const { Logger } = require("concurrently");

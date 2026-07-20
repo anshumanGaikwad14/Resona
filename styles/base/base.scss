@@ -1,0 +1,9 @@
+body {
+  @extend %description-20;
+
+  font-family: $font-source-serif;
+
+  @include media("<=phone") {
+    font-size: 100px;
+  }
+}

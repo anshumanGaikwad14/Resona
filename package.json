@@ -25,6 +25,7 @@
     "globals": "^17.7.0",
     "glslify-loader": "^2.0.0",
     "image-minimizer-webpack-plugin": "^5.0.0",
+    "include-media": "^2.0.0",
     "mini-css-extract-plugin": "^2.10.2",
     "postcss-loader": "^8.2.1",
     "sass": "^1.101.0",

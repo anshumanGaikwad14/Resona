@@ -1,3 +1,31 @@
-.class {
-  color: #fff;
-}
+@import "./utils/variables";
+@import "./utils/functions";
+@import "./utils/mixins";
+@import "./utils/vendors";
+@import "./utils/responsive";
+
+@import "./shared/descriptions";
+@import "./shared/titles";
+
+@import "./base/font";
+@import "./base/reset";
+@import "./base/base";
+
+@import "./components/preloader";
+
+@import "./layout/navigation";
+
+@import "./pages/home/home";
+
+@import "./pages/collections/collections";
+
+@import "./pages/detail/detail";
+
+@import "./pages/gallery/gallery";
+
+@import "./pages/about/about";
+@import "./pages/about/content";
+@import "./pages/about/gallery";
+@import "./pages/about/hero";
+@import "./pages/about/highlight";
+@import "./pages/about/title";
