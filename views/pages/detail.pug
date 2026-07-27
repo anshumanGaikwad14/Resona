@@ -6,9 +6,6 @@ block variables
 block content
     .product 
         .product__wrapper 
-            .product__title 
-                .product__title_wrapper 
-                    h1.product__title__text=product.data.title
             
             .product__image 
                 .product__image__wrapper
@@ -17,24 +14,80 @@ block content
             
             .product__details 
                 .product__details__wrapper 
-                    p.product__details__label=product.data.collection.data.title 
+                    p.product__details__label=`${product.data.collection.data.title} ${home.data.collection}`
 
-                    h2.product__details__price=product.data.price
+                    h2.product__details__title=product.data.title
 
                     .product__details__sizes 
                         p.product__details__sizes__label=product.data.label
 
                         each size in product.data.size
-                            button.product__details__sizes__button=size.button
+                            button.product__details__sizes__button(class=`${size.type === 'Active'? 'product__details__sizes__button--active' : 'product__details__sizes__button--disable'}`)=size.button
 
                     p.product__details__description=product.data.description
 
                     .product__details__info 
                         each info in product.data.info
                             .product__details__info__content
-                                svg.product__details__info__content__logo=info.icon 
+                                .product__details__info__content__logo=info.icon 
+                                    if info.icon === 'Star'
+                                        svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40")
+                                            defs
+                                                style.
+                                                    .st0 {
+                                                        fill: #fffcf5;
+                                                    }
+
+                                                    .st1 {
+                                                        stroke: #fffcf5;
+                                                        stroke-linecap: round;
+                                                    }
+
+                                                    .st1,
+                                                    .st2 {
+                                                        fill: none;
+                                                    }
+
+                                                    .st2 {
+                                                        stroke: #fff;
+                                                        stroke-opacity: .5;
+                                                    }
+                                            path(stroke-opacity=".5" class="st2" d="M20,.5h0c10.8,0,19.5,8.7,19.5,19.5h0c0,10.8-8.7,19.5-19.5,19.5h0C9.2,39.5.5,30.8.5,20h0C.5,9.2,9.2.5,20,.5Z")
+                                            path(class="st0" d="M20,17h0c1.7,0,3,1.3,3,3h0c0,1.7-1.3,3-3,3h0c-1.7,0-3-1.3-3-3h0c0-1.7,1.3-3,3-3Z")
+                                            path(class="st1" d="M20,20l4-9.5M20,20l10-4M20,20l9,4.5M20,20l4,9M20,20l-.2.5M16,29l3.8-8.5M19.8,20.5l-8.8,3.5M19.8,20.5l-8.8-4.5M19.8,20.5l-3.8-10")
+                                        
+                                    if info.icon === 'Arrow'
+                                        svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40")
+                                            defs
+                                                style.
+                                                    .st0 {
+                                                        stroke-linecap: round;
+                                                        stroke-width: 2px;
+                                                    }
+
+                                                    .st0, .st1 {
+                                                        stroke: #fffcf5;
+                                                    }
+
+                                                    .st0, .st2 {
+                                                        fill: none;
+                                                        stroke-opacity: .5;
+                                                    }
+
+                                                    .st1 {
+                                                        fill: #fffcf5;
+                                                    }
+
+                                                    .st2 {
+                                                        stroke: #fff;
+                                                    }
+                                            path(class="st2" d="M20,.5h0c10.8,0,19.5,8.7,19.5,19.5h0c0,10.8-8.7,19.5-19.5,19.5h0C9.2,39.5.5,30.8.5,20h0C.5,9.2,9.2.5,20,.5Z")
+                                            path(class="st0" d="M13.5,26.5l12-12")
+                                            path(class="st1" d="M10,30v-4l4,4h-4Z")
+                                            path(class="st1" d="M29.1,11.2l-.2,4-3.8-4.1,4,.2Z")
+
                                 p.product__details__info__content__text=info.text
 
-                        
-                    a.product__details__info__Buy(target='_blank' href=product.data.link_url.url)=product.data.link_text
+                    a.product__details__info__button(target='_blank' href=product.data.link_url.url)
+                        p.product__details__info__button__buy=product.data.link_text
 

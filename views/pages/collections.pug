@@ -22,8 +22,15 @@ block content
 
             .collections__content 
                 .collections__content__wrapper 
-                    each collection in collections
-                        h1.collections__title=`${collection.data.title} ${home.data.collection}`
+                    each collection,index in collections
+                        if index === 1
+                            h1.collections__title=`${collection.data.title} ${home.data.collection}`
 
-                        p.collections__description=collection.data.description
-                
+                            p.collections__description=collection.data.description
+
+            .collections__mobile 
+                .collections__mobile__wrapper 
+                    each collection ,index in collections
+                        if index === 1
+                            p.collections__mobile__title=collection.data.title
+

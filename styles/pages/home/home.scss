@@ -1,35 +1,129 @@
 .home {
+  @extend %cover;
+
+  background: linear-gradient(
+    to bottom,
+    $color-primary-dark,
+    $color-primary-light
+  );
+  color: $color-primary-white;
+
+  overflow: hidden;
 }
 
 .home__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .home__center {
+  @extend %cover;
+  @extend %center;
+  flex-direction: column;
 }
 
 .home__center__single {
+  position: relative;
+  z-index: 1;
 }
 
 .home__center__single__text {
+  @extend %title-128;
+
+  letter-spacing: -1.2rem;
+  line-height: 0.7;
+  text-transform: uppercase;
+  text-align: center;
+
+  &.home__center__single__text--light {
+  }
+
+  &.home__center__single__text--bold {
+    font-family: $font-satoshi;
+    font-weight: bold;
+    margin-bottom: -0.8rem;
+  }
 }
 
 .home__center__image {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .home__center__image__media {
+  position: absolute;
+  width: 55.2rem;
+  height: 61.1rem;
+  bottom: 0;
+  right: 7.1rem;
+
+  @include media("<phone") {
+    right: -14rem;
+  }
 }
 
 .home__center__image__media__image {
+  width: 100%;
+  height: 100%;
 }
 
 .home__center__multiple {
+  @extend %center;
+  position: relative;
+  align-items: flex-end;
+  gap: 0.5rem;
+  z-index: 3;
 }
 
 .home__center__multiple__text {
+  @extend %title-128;
+
+  letter-spacing: -1.2rem;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+
+  &.home__center__multiple__text--light {
+    font-size: 10rem;
+    line-height: 0.8;
+  }
+
+  &.home__center__multiple__text--bold {
+    font-family: $font-satoshi;
+    font-weight: bold;
+  }
 }
 
 .home__button {
+  @extend %center;
+  position: absolute;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15.9rem;
+  height: 3.4rem;
+  border: 2px solid rgba($color-primary-white, 0.5);
+  background: rgba($color-primary-white, 0.05);
+  border-radius: 24rem;
+  z-index: 2;
+
+  @include media("<phone") {
+    width: 65.4rem;
+    height: 8.4rem;
+  }
 }
 
 .home__button__link {
+  @extend %description-14;
+  text-transform: uppercase;
+  letter-spacing: 8%;
+  color: $color-primary-white;
+  font-family: $font-satoshi;
+
+  @include media("<phone") {
+    font-size: 3rem;
+  }
 }

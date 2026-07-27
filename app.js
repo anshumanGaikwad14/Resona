@@ -81,40 +81,11 @@ app.get("/", async (req, res) => {
       handleDefaults(),
     ]);
 
-    console.log(home, "✅✅");
+    console.log(home.data.single_text, "✅✅");
 
     res.render("pages/home", {
       ...defaults,
       home,
-      collections,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send(error.message);
-  }
-});
-
-app.get("/gallery", async (req, res) => {
-  try {
-    const [gallery, collections, defaults] = await Promise.all([
-      client.getByType("gallery"),
-      client.getAllByType("collection", {
-        fetchLinks: "product.image",
-      }),
-      handleDefaults(),
-    ]);
-
-    collections.forEach((col) => {
-      col.data.products.forEach((product) => {
-        console.log(product, "💖💖");
-      });
-    });
-
-    console.log(collections, "😊");
-
-    res.render("pages/gallery", {
-      ...defaults,
-      gallery,
       collections,
     });
   } catch (error) {
@@ -169,18 +140,20 @@ app.get("/collections", async (req, res) => {
 app.get("/detail/:uid", async (req, res) => {
   try {
     console.log(req.params);
-    const [product, defaults] = await Promise.all([
+    const [product, home, defaults] = await Promise.all([
       client.getByUID("product", req.params.uid, {
         fetchLinks: ["collection.title"],
       }),
+      client.getSingle("home"),
       handleDefaults(),
     ]);
 
-    console.log(product.data.info);
+    console.log(product.data.size, "✅");
 
     res.render("pages/detail", {
       ...defaults,
       product,
+      home,
     });
   } catch (error) {
     console.log(error);

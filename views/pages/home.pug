@@ -9,7 +9,7 @@ block content
             .home__center
                 each single in home.data.single_text
                     .home__center__single
-                        h1.home__center__single__text=single.title 
+                        h1.home__center__single__text(class=`${single.type === 'Light' ? 'home__center__single__text--light': 'home__center__single__text--bold'}`)=single.title 
 
                 .home__center__image
                     figure.home__center__image__media 
@@ -17,7 +17,7 @@ block content
                 
                 .home__center__multiple 
                     each multiple in home.data.multiple_text 
-                        h1.home__center__multiple__text=multiple.title
+                        h1.home__center__multiple__text(class=`${multiple.type === 'Light' ? 'home__center__multiple__text--light': 'home__center__multiple__text--bold'}`)=multiple.title
 
-            .home__button 
-                a.home__button__link(href=Link(home.data.collections))=home.data.button
+            a.home__button(href=Link(home.data.collections))
+                p.home__button__link=home.data.button

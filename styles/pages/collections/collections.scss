@@ -1,44 +1,176 @@
 .collections {
+  @extend %cover;
+
+  background: $color-primary-white;
+  color: $color-primary-black;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 16.6rem;
+    background: linear-gradient(
+      to top,
+      $color-primary-white,
+      rgba($color-primary-white, 0)
+    );
+    z-index: 1;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 16.6rem;
+    background: linear-gradient(
+      to bottom,
+      $color-primary-white,
+      rgba($color-primary-white, 0)
+    );
+    z-index: 1;
+  }
 }
 
 .collections__wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .collections__label {
+  @extend %cover;
+  @extend %center;
+
+  @include media("<phone") {
+    display: none;
+  }
 }
 
 .collections__label__wrapper {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .collections__label__number {
+  max-width: 12rem;
+  text-align: center;
+  @extend %description-14;
+  font-family: $font-satoshi;
+  letter-spacing: 12%;
+  text-transform: uppercase;
+  line-height: 1.5;
 }
 
 .collections__label__title {
+  @extend %title-200;
+  letter-spacing: -12%;
+  color: $color-primary-light;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
 }
 
 .collections__gallery {
+  overflow: hidden;
+  @extend %center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50.9rem;
+  width: 100%;
+  z-index: 2;
 }
 
 .collections__gallery__wrapper {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .collections__gallery__product {
+  border: 1.2rem solid #fffcf5;
+  box-shadow: $shadow-lift;
 }
 
 .collections__gallery__product__media {
+  width: 29.2rem;
+  height: 41.1rem;
 }
 
 .collections__gallery__product__media__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .collections__content {
+  position: absolute;
+  bottom: 4rem;
+  left: 4rem;
+  z-index: 2;
+  pointer-events: none;
+
+  @include media("<phone") {
+    top: 10%;
+    left: auto;
+    right: auto;
+  }
 }
 
 .collections__content__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .collections__title {
+  @extend %title-60;
+  letter-spacing: -6%;
+
+  @include media("<phone") {
+    font-size: 10rem;
+    letter-spacing: -4%;
+    text-transform: uppercase;
+    line-height: 0.8;
+    text-align: center;
+  }
 }
 
 .collections__description {
+  @extend %description-16;
+  line-height: -4%;
+  max-width: 42rem;
+  line-height: 1.5;
+
+  @include media("<phone") {
+    display: none;
+  }
+}
+
+.collections__mobile {
+  @extend %cover;
+  z-index: 1;
+}
+
+.collections__mobile__wrapper {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+}
+
+.collections__mobile__title {
+  font-size: 56rem;
+  text-transform: uppercase;
+  letter-spacing: -12%;
+  color: rgba($color-primary-light, 0.05);
 }

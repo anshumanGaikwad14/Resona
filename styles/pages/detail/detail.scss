@@ -1,65 +1,228 @@
 .product {
+  @extend %cover;
+  color: $color-primary-white;
+  padding-top: 0.1px;
+
+  background: linear-gradient(
+    to bottom,
+    $color-primary-dark,
+    $color-primary-light
+  );
+
+  @include media("<phone") {
+    position: relative;
+    height: auto;
+  }
 }
 
 .product__wrapper {
-}
+  @extend %cover;
+  @extend %center;
 
-.product__title {
-}
+  gap: 10rem;
 
-.product__title_wrapper {
-}
-
-.product__title__text {
+  @include media("<phone") {
+    flex-direction: column;
+    margin-top: 20rem;
+    position: relative;
+    height: fit-content;
+  }
 }
 
 .product__image {
 }
 
 .product__image__wrapper {
+  border: 1.2rem solid $color-primary-white;
+  box-shadow: $shadow-lift;
 }
 
 .product__image__media {
+  width: 39.2rem;
+  height: 55.2rem;
+
+  @include media("<phone") {
+    width: 57rem;
+    height: 80.2rem;
+  }
 }
 
 .product__image__media__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .product__details {
 }
 
 .product__details__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+
+  @include media("<phone") {
+    width: 65.4rem;
+    gap: 6.4rem;
+    margin-bottom: 20rem;
+  }
 }
 
 .product__details__label {
+  @extend %description-12;
+  text-transform: uppercase;
+  font-family: $font-satoshi;
+  letter-spacing: 8%;
+
+  @include media("<phone") {
+    font-size: 2.8rem;
+  }
 }
 
-.product__details__price {
+.product__details__title {
+  @extend %title-74;
+  font-family: $font-source-serif;
+  //   font-weight: 500;
+  //   font-weight: 600;
+
+  @include media("<phone") {
+    font-size: 18rem;
+    line-height: 0.8;
+    width: 100%;
+  }
 }
 
 .product__details__sizes {
 }
 
 .product__details__sizes__label {
+  @extend %description-12;
+  text-transform: uppercase;
+  font-family: $font-satoshi;
+  letter-spacing: 8%;
+  opacity: 50%;
+
+  &:first-child {
+    margin-bottom: 1.2rem;
+    @include media("<phone") {
+      margin-bottom: 4.4rem;
+    }
+  }
+
+  @include media("<phone") {
+    font-size: 2.8rem;
+  }
 }
 
 .product__details__sizes__button {
+  @extend %description-14;
+  letter-spacing: 8%;
+  padding: 1.2rem 1.6rem;
+  border: none;
+  border-radius: 24rem;
+  margin-right: 0.8rem;
+
+  @include media("<phone") {
+    font-size: 3.6rem;
+    padding: 2.2rem 3rem;
+    margin-right: 2.4rem;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &.product__details__sizes__button--active {
+    background: $color-primary-white;
+    color: $color-primary-light;
+  }
+  &.product__details__sizes__button--disable {
+    background: rgba($color-primary-white, 0.25);
+    color: $color-primary-white;
+  }
 }
 
 .product__details__description {
+  @extend %description-16;
+  letter-spacing: -4%;
+  line-height: 1.5;
+  max-width: 32rem;
+
+  @include media("<phone") {
+    font-size: 3rem;
+    max-width: 100%;
+  }
 }
 
 .product__details__info {
+  display: flex;
+  max-width: 32rem;
+  flex-direction: column;
+  gap: 2rem;
+
+  @include media("<phone") {
+    max-width: 100%;
+    gap: 4rem;
+  }
 }
 
 .product__details__info__content {
+  display: flex;
+  align-items: center;
+  margin-left: 4.8rem;
+  gap: 1.2rem;
+
+  @include media("<phone") {
+    gap: 3.2rem;
+  }
 }
 
 .product__details__info__content__logo {
+  font-size: 0;
+  width: 4rem;
+  height: 4rem;
+
+  @include media("<phone") {
+    width: 9.2rem;
+    height: 9.2rem;
+  }
 }
 
 .product__details__info__content__text {
+  @extend %description-16;
+  letter-spacing: -4%;
+  line-height: 1.5;
+  max-width: 32rem;
+
+  @include media("<phone") {
+    font-size: 3rem;
+  }
 }
 
-.product__details__info__Buy {
+.product__details__info__button {
+  @extend %center;
+  width: 12.8rem;
+  height: 4.2rem;
+  margin-left: 4.8rem;
+  border: 2px solid rgba($color-primary-white, 0.5);
+  background: rgba($color-primary-white, 0.05);
+  border-radius: 24rem;
+
+  @include media("<phone") {
+    width: 100%;
+    height: 8.5rem;
+    margin-left: 0;
+  }
+}
+
+.product__details__info__button__buy {
+  @extend %description-14;
+  text-transform: uppercase;
+  letter-spacing: 8%;
+  color: $color-primary-white;
+  font-family: $font-satoshi;
+
+  @include media("<phone") {
+    font-size: 2.8rem;
+  }
 }

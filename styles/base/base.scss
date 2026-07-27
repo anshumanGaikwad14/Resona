@@ -1,9 +1,19 @@
+html {
+  box-sizing: border-box;
+  font-size: calc(100vw / 1440 * 10);
+
+  @include media("<phone") {
+    font-size: calc((100vw / 750 * 10));
+  }
+}
+
 body {
   @extend %description-20;
 
   font-family: $font-source-serif;
+}
 
-  @include media("<=phone") {
-    font-size: 100px;
-  }
+a {
+  text-decoration: none;
+  color: inherit;
 }
