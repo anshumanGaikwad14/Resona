@@ -9,7 +9,7 @@ block content
             section.about__hero 
                 each images,index in about.data.images
                     figure.about__hero__media 
-                        img.about__hero__media__image(alt=images.image.alt src=images.image.url)
+                        img.about__hero__media__image(alt=images.image.alt data-src=images.image.url)
                 
                 h1.about__hero__title=about.data.main_text
                     svg.about__hero__title__svg(viewBox="0 0 524 875" fill="currentColor" xmlns="http://www.w3.org/2000/svg")
@@ -30,7 +30,7 @@ block content
                                 .about__content__description!=prismic.asHTML(section.primary.description)
 
                             figure.about__content__media 
-                                img.about__content__media__image(alt=section.primary.image.alt src=section.primary.image.url)
+                                img.about__content__media__image(alt=section.primary.image.alt data-src=section.primary.image.url)
 
                 if section.slice_type === 'highlight'
                     section.about__highlight 
@@ -43,14 +43,14 @@ block content
                             each images in section.items 
                                 .about__highlight__media__wrapper
                                     figure.about__highlight__media 
-                                        img.about__highlight__media__image(alt=images.image.alt src=images.image.url)
+                                        img.about__highlight__media__image(alt=images.image.alt data-src=images.image.url)
 
                 if section.slice_type === 'gallery'
                     section.about__gallery 
                         .about__gallery__wrapper 
                             each images in section.items
                                 figure.about__gallery__media 
-                                    img.about__gallery__media__image(alt=images.image.alt src=images.image.url)
+                                    img.about__gallery__media__image(alt=images.image.alt data-src=images.image.url)
 
 
                             

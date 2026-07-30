@@ -81,7 +81,7 @@ app.get("/", async (req, res) => {
       handleDefaults(),
     ]);
 
-    console.log(home.data.single_text, "✅✅");
+    console.log(home, "✅✅");
 
     res.render("pages/home", {
       ...defaults,

@@ -1,6 +1,6 @@
 .about__hero {
   width: 100%;
-  height: 112.2rem;
+  height: 80rem;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -13,11 +13,11 @@
 
 .about__hero__media {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 35.4rem;
-  height: 49.8rem;
+  width: 23.7rem;
+  height: 34.4rem;
   z-index: 1;
 
   @include media("<phone") {
@@ -40,6 +40,6 @@
 }
 
 .about__hero__title__svg {
-  width: 65.4rem;
-  height: 90rem;
+  width: 42.6rem;
+  height: 60.3rem;
 }

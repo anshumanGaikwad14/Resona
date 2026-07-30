@@ -3,15 +3,22 @@
   @extend %center;
   background: $color-primary-white;
   color: $color-primary-light;
-
-  display: none;
+  z-index: z("preloader");
 }
 
 .preloader__text {
-  @extend %title-53;
-
+  font-size: 0;
   max-width: 60.8rem;
   text-align: center;
+
+  span {
+    overflow: hidden;
+    display: inline-block;
+
+    span {
+      @extend %title-53;
+    }
+  }
 }
 
 .preloader__number {
@@ -22,4 +29,9 @@
   left: 50%;
   transform: translateX(-50%);
   font-weight: 600;
+  overflow: hidden;
+}
+
+.preloader__number__text {
+  display: inline-block;
 }
