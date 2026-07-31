@@ -11,7 +11,11 @@ class App {
     this.createPreloader();
     this.createContent();
     this.createPages();
+
+    this.addEventListener();
     this.addLinkListener();
+
+    this.update();
   }
 
   createPreloader() {
@@ -34,10 +38,12 @@ class App {
 
     this.page = this.pages[this.template];
     this.page.create();
+
     this.page.show();
   }
 
   onPreloaded() {
+    this.onResize();
     this.preloader.destroy();
   }
 
@@ -61,12 +67,30 @@ class App {
 
       this.page = this.pages[this.template];
       this.page.create();
+      this.onResize();
       this.page.show();
 
       this.addLinkListener();
     } else {
       console.log("error");
     }
+  }
+
+  onResize() {
+    if (this.page && this.page.onResize) {
+      this.page.onResize();
+    }
+  }
+
+  update() {
+    if (this.page && this.page.update) {
+      this.page.update();
+    }
+    this.frame = window.requestAnimationFrame(this.update.bind(this));
+  }
+
+  addEventListener() {
+    window.addEventListener("resize", this.onResize.bind(this));
   }
 
   addLinkListener() {

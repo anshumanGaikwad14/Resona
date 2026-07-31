@@ -1,4 +1,8 @@
 html {
+  @extend %cover;
+  position: fixed;
+  overflow: hidden;
+
   box-sizing: border-box;
   font-size: calc(100vw / 1440 * 10);
 
@@ -8,6 +12,9 @@ html {
 }
 
 body {
+  @extend %cover;
+  position: fixed;
+
   @extend %description-20;
 
   font-family: $font-source-serif;
@@ -16,4 +23,8 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.content {
+  @extend %cover;
 }
