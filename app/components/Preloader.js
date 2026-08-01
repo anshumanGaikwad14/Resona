@@ -1,7 +1,7 @@
 import { each } from "lodash";
 import GSAP from "gsap";
 import { split } from "utils/text";
-import Component from "classes/component";
+import Component from "classes/Component";
 
 export default class Preloader extends Component {
   constructor() {

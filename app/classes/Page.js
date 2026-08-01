@@ -1,12 +1,22 @@
 import GSAP from "gsap";
-import { each, transform } from "lodash";
+import { each, map } from "lodash";
 import Prefix from "prefix";
+import NormalizeWheel from "normalize-wheel";
+
+import Title from "animations/Title";
+import Paragraph from "animations/Paragraph";
+import Label from "animations/Label";
+import Hero from "animations/Hero";
 
 export default class Page {
   constructor({ element, elements, id }) {
     this.selector = element;
     this.selectorChildren = {
       ...elements,
+      animationsTitles: "[data-animation='title']",
+      animationsParagraphs: "[data-animation='paragraph']",
+      animationsLabels: "[data-animation='label']",
+      animationsHeros: "[data-animation='hero']",
     };
     this.id = id;
 
@@ -44,6 +54,53 @@ export default class Page {
         }
       }
     });
+
+    this.createAnimation();
+  }
+
+  createAnimation() {
+    this.animation = [];
+
+    // Title
+    this.animationsTitles = map(this.elements.animationsTitles, (element) => {
+      return new Title({
+        element,
+      });
+    });
+
+    this.animation.push(...this.animationsTitles);
+
+    // Paragraph
+    this.animationsParagraphs = map(
+      this.elements.animationsParagraphs,
+      (element) => {
+        return new Paragraph({
+          element,
+        });
+      },
+    );
+
+    this.animation.push(...this.animationsParagraphs);
+
+    // Label
+    this.animationsLabels = map(this.elements.animationsLabels, (element) => {
+      return new Label({
+        element,
+      });
+    });
+
+    this.animation.push(...this.animationsLabels);
+
+    // Hero
+    this.animationsHeros = map(this.elements.animationsHeros, (element) => {
+      return new Hero({
+        element,
+      });
+    });
+
+    console.log(this.elements.animationsHeros);
+
+    this.animation.push(...this.animationsHeros);
   }
 
   show() {
@@ -83,6 +140,10 @@ export default class Page {
       this.scroll.limit =
         this.elements.wrapper.clientHeight - window.innerHeight;
     }
+
+    each(this.animation, (animation) => {
+      animation.onResize();
+    });
   }
 
   update() {
@@ -95,7 +156,7 @@ export default class Page {
     this.scroll.current = GSAP.utils.interpolate(
       this.scroll.current,
       this.scroll.target,
-      0.05,
+      0.1,
     );
 
     if (this.scroll.current < 0.01) {
@@ -109,8 +170,8 @@ export default class Page {
   }
 
   onMouseWheel(event) {
-    const { deltaY } = event;
-    this.scroll.target += deltaY;
+    const { pixelY } = NormalizeWheel(event);
+    this.scroll.target += pixelY;
   }
 
   addEventListeners() {

@@ -19,15 +19,15 @@ block content
                 if section.slice_type === 'title'
                     section.about__title 
                         .about__title__wrapper 
-                            h3.about__title__text=section.primary.text
+                            h3.about__title__text(data-animation='title')!=section.primary.text.replace(/\n/g, "<br>")
 
                 if section.slice_type === 'content'
                     section.about__content 
                         .about__content__wrapper(class=`${section.primary.type === 'Right' ? "about__content__wrapper--right" : "about__content__wrapper--left"}`) 
                             .about__content__info
-                                p.about__content__label=section.primary.label
+                                p.about__content__label(data-animation='label')=section.primary.label
 
-                                .about__content__description!=prismic.asHTML(section.primary.description)
+                                .about__content__description!=prismic.asHTML(section.primary.description).replace(/<p>/g, "<p data-animation='paragraph'>")
 
                             figure.about__content__media 
                                 img.about__content__media__image(alt=section.primary.image.alt data-src=section.primary.image.url)
@@ -36,9 +36,9 @@ block content
                     section.about__highlight 
                         .about__highlight__wrapper
                             if section.primary.label
-                                p.about__highlight__label=section.primary.label
+                                p.about__highlight__label(data-animation='label')=section.primary.label
 
-                            h2.about__highlight__title=section.primary.title
+                            h2.about__highlight__title(data-animation='hero')=section.primary.title
 
                             each images in section.items 
                                 .about__highlight__media__wrapper
@@ -50,7 +50,7 @@ block content
                         .about__gallery__wrapper 
                             each images in section.items
                                 figure.about__gallery__media 
-                                    img.about__gallery__media__image(alt=images.image.alt data-src=images.image.url)
+                                    img.about__gallery__media__image(alt=images.image.alt data-src=images.image.url )
 
 
                             

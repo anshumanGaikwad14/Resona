@@ -28,3 +28,13 @@ a {
 .content {
   @extend %cover;
 }
+
+[data-animation="paragraph"],
+[data-animation="label"],
+[data-animation="title"] {
+  span {
+    vertical-align: top;
+    display: inline-block;
+    overflow: hidden;
+  }
+}
