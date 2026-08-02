@@ -1,4 +1,5 @@
 import Page from "classes/Page";
+import Button from "classes/Button";
 
 export default class Home extends Page {
   constructor() {
@@ -8,6 +9,7 @@ export default class Home extends Page {
       elements: {
         navigation: document.querySelector(".navigation"),
         button: ".home__button",
+        link: ".home__button__link",
       },
     });
   }
@@ -15,9 +17,11 @@ export default class Home extends Page {
   create() {
     super.create();
 
-    this.elements.button.addEventListener("click", (e) => {
-      e.preventDefault();
-      console.log("oh you clicked");
+    this.button = new Button({
+      element: this.elements.button,
+      elements: {
+        link: this.elements.link,
+      },
     });
   }
 }

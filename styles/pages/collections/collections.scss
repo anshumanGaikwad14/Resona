@@ -1,8 +1,8 @@
 .collections {
   @extend %page;
 
-  background: $color-primary-white;
-  color: $color-primary-black;
+  //   background: $color-primary-white;
+  //   color: $color-primary-black;
   overflow: hidden;
 
   &::after {
@@ -77,9 +77,9 @@
 }
 
 .collections__gallery {
-  overflow: hidden;
   @extend %center;
   position: absolute;
+  pointer-events: none;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -98,6 +98,7 @@
 .collections__gallery__product {
   border: 1.2rem solid #fffcf5;
   box-shadow: $shadow-lift;
+  pointer-events: auto;
 }
 
 .collections__gallery__product__media {
@@ -157,7 +158,12 @@
 
 .collections__mobile {
   @extend %cover;
+  display: none;
   z-index: 1;
+
+  @include media("<phone") {
+    display: inline-block;
+  }
 }
 
 .collections__mobile__wrapper {

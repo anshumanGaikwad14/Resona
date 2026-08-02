@@ -1,13 +1,14 @@
 .product {
   @extend %page;
-  color: $color-primary-white;
   padding-top: 0.1px;
 
-  background: linear-gradient(
-    to bottom,
-    $color-primary-dark,
-    $color-primary-light
-  );
+  //   color: $color-primary-white;
+
+  //   background: linear-gradient(
+  //     to bottom,
+  //     $color-primary-dark,
+  //     $color-primary-light
+  //   );
 
   @include media("<phone") {
     position: relative;

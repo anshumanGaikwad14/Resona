@@ -5,17 +5,27 @@ import Detail from "pages/Detail";
 import Home from "pages/Home";
 
 import Preloader from "components/Preloader";
+import Navigation from "components/Navigation";
 
 class App {
   constructor() {
-    this.createPreloader();
     this.createContent();
+
+    this.createPreloader();
+    this.createNavigation();
+
     this.createPages();
 
     this.addEventListener();
     this.addLinkListener();
 
     this.update();
+  }
+
+  createNavigation() {
+    this.navigation = new Navigation({
+      template: this.template,
+    });
   }
 
   createPreloader() {
@@ -37,6 +47,7 @@ class App {
     };
 
     this.page = this.pages[this.template];
+
     this.page.create();
 
     this.page.show();
@@ -67,6 +78,7 @@ class App {
 
       this.page = this.pages[this.template];
       this.page.create();
+      this.navigation.onChange(this.template);
       this.onResize();
       this.page.show();
 

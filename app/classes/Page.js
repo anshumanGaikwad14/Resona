@@ -8,6 +8,9 @@ import Paragraph from "animations/Paragraph";
 import Label from "animations/Label";
 import Hero from "animations/Hero";
 
+import AsyncLoad from "classes/AsyncLoad";
+import { ColorManager } from "classes/Colors";
+
 export default class Page {
   constructor({ element, elements, id }) {
     this.selector = element;
@@ -17,6 +20,8 @@ export default class Page {
       animationsParagraphs: "[data-animation='paragraph']",
       animationsLabels: "[data-animation='label']",
       animationsHeros: "[data-animation='hero']",
+
+      preloaders: "[data-src]",
     };
     this.id = id;
 
@@ -56,12 +61,28 @@ export default class Page {
     });
 
     this.createAnimation();
+    this.createPreloader();
+  }
+
+  createPreloader() {
+    if (this.elements.preloaders instanceof window.NodeList) {
+      this.preloaders = map(this.elements.preloaders, (element) => {
+        return new AsyncLoad({
+          element: element,
+        });
+      });
+    } else {
+      this.preloaders = new AsyncLoad({
+        element: this.elements.preloaders,
+      });
+    }
   }
 
   createAnimation() {
     this.animation = [];
 
     // Title
+
     this.animationsTitles = map(this.elements.animationsTitles, (element) => {
       return new Title({
         element,
@@ -71,6 +92,7 @@ export default class Page {
     this.animation.push(...this.animationsTitles);
 
     // Paragraph
+
     this.animationsParagraphs = map(
       this.elements.animationsParagraphs,
       (element) => {
@@ -92,19 +114,23 @@ export default class Page {
     this.animation.push(...this.animationsLabels);
 
     // Hero
+
     this.animationsHeros = map(this.elements.animationsHeros, (element) => {
       return new Hero({
         element,
       });
     });
 
-    console.log(this.elements.animationsHeros);
-
     this.animation.push(...this.animationsHeros);
   }
 
   show() {
     return new Promise((resolve) => {
+      ColorManager.change({
+        background: this.element.getAttribute("data-background"),
+        color: this.element.getAttribute("data-color"),
+      });
+
       this.animateIn = GSAP.timeline();
       this.animateIn.fromTo(
         this.element,

@@ -6,6 +6,13 @@ html {
   box-sizing: border-box;
   font-size: calc(100vw / 1440 * 10);
 
+  background: linear-gradient(
+    to bottom,
+    $color-primary-dark,
+    $color-primary-light
+  );
+  color: $color-primary-white;
+
   @include media("<phone") {
     font-size: calc((100vw / 750 * 10));
   }

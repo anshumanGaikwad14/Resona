@@ -1,12 +1,12 @@
 .home {
   @extend %page;
 
-  background: linear-gradient(
-    to bottom,
-    $color-primary-dark,
-    $color-primary-light
-  );
-  color: $color-primary-white;
+  //   background: linear-gradient(
+  //     to bottom,
+  //     $color-primary-dark,
+  //     $color-primary-light
+  //   );
+  //   color: $color-primary-white;
 
   overflow: hidden;
 }
@@ -30,6 +30,7 @@
 
 .home__center__single__text {
   @extend %title-128;
+  color: $color-primary-white;
 
   letter-spacing: -1.2rem;
   line-height: 0.7;
@@ -80,6 +81,7 @@
 
 .home__center__multiple__text {
   @extend %title-128;
+  color: $color-primary-white;
 
   letter-spacing: -1.2rem;
   line-height: 1;
